@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient
 const assert = require('assert')
 
 const url = 'mongodb://localhost:27017'
-const dbName = 'smartmeter'
+const dbName = 'SmartmeterDb'
 const client = new MongoClient(url)
 var mqtt = mqtt.connect('mqtt://test.mosquitto.org')
 
@@ -11,7 +11,7 @@ client.connect(function (err) {
     assert.strictEqual(null, err)
     console.log('Connected successfully to server')
 
-    mqtt.subscribe(["SMARTMETER-TIES-CHIEM-DATA", "SMARTMETER-TIES-CHIEM-LOGIN"], console.log)
+    mqtt.subscribe(["SMARTMETER-BANO-KRUSTY-DATA", "SMARTMETER-BANO-KRUSTY-LOGIN"], console.log)
     const db = client.db(dbName)
     const login = db.collection("login")
     const smartmeterdata = db.collection("smartmeterdata")
@@ -20,13 +20,13 @@ client.connect(function (err) {
     mqtt.on("message", function (topic, message) {
         try {
             var doc = JSON.parse(message)
-            if (topic == "SMARTMETER-TIES-CHIEM-LOGIN") {
+            if (topic == "SMARTMETER-BANO-KRUSTY-LOGIN") {
                 login.insertOne(doc)
             } else {
                 if (doc['MQTT_USER'].match('SMARTMETER') != null) {
                     doc = parseDataToJson(doc);
                 }
-                if (topic == "SMARTMETER-TIES-CHIEM-DATA") {
+                if (topic == "SMARTMETER-BANO-KRUSTY-DATA") {
                     if (doc['MQTT_USER'].match('SMARTMETER')) {
                         smartmeterdata.insertOne(doc)
 
