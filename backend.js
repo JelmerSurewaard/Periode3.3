@@ -34,6 +34,7 @@ client.connect(function (err) {
                         powerdoc['MQTT_USER'] = doc['MQTT_USER']
                         powerdoc['Time'] = doc['Time']
                         powerdoc['Actual_electricity_power_delivered_plus'] = doc['Actual_electricity_power_delivered_plus']
+                        powerdoc['Actual_electricity_power_received_min'] = doc['Actual_electricity_power_received_min']
                         powerdata.insertOne(powerdoc)
                     }
                     if (doc['MQTT_USER'].match('SENSORDATA')) {
