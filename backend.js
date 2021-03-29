@@ -38,6 +38,11 @@ client.connect(function (err) {
                         powerdata.insertOne(powerdoc)
                     }
                     if (doc['MQTT_USER'].match('SENSORDATA')) {
+                        var sensorDoc = {}
+                        sensorDoc['MQTT_USER'] = doc['MQTT_USER']
+                        sensorDoc['Time'] = doc['Time']
+                        sensorDoc['Temperature:'] = doc['Temperature:']
+                        sensorDoc['Humidity:'] = doc['Humidity:']
                         sensordata.insertOne(doc)
                     }
                 }
