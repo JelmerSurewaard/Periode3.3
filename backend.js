@@ -41,8 +41,8 @@ client.connect(function (err) {
                         var sensorDoc = {}
                         sensorDoc['MQTT_USER'] = doc['MQTT_USER']
                         sensorDoc['Time'] = doc['Time']
-                        sensorDoc['Temperature:'] = doc['Temperature:']
-                        sensorDoc['Humidity:'] = doc['Humidity:']
+                        sensorDoc['Temperature'] = doc['Temperature']
+                        sensorDoc['Humidity'] = doc['Humidity']
                         sensordata.insertOne(doc)
                     }
                 }
