@@ -11,7 +11,7 @@ client.connect(function (err) {
     assert.strictEqual(null, err)
     console.log('Connected successfully to server')
 
-    mqtt.subscribe(["SMARTMETER-BANO-KRUSTY-DATA", "SMARTMETER-BANO-KRUSTY-LOGIN"], console.log)
+    mqtt.subscribe(["SMARTMETER-BANO-KRUSTY-DATA", "SMARTMETER-BANO-KRUSTY-LOGIN", "SENSORDATA-BANO-KRUSTY-DATA"], console.log)
     const db = client.db(dbName)
     const login = db.collection("login")
     const smartmeterdata = db.collection("smartmeterdata")
