@@ -26,7 +26,7 @@ client.connect(function (err) {
                 if (doc['MQTT_USER'].match('SMARTMETER') != null) {
                     doc = parseDataToJson(doc);
                 }
-                if (topic == "SMARTMETER-BANO-KRUSTY-DATA") {
+                if (topic == "SMARTMETER-BANO-KRUSTY-DATA" || "SENSORDATA-BANO-KRUSTY-DATA") {
                     if (doc['MQTT_USER'].match('SMARTMETER')) {
                         smartmeterdata.insertOne(doc)
 
